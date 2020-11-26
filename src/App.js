@@ -4,12 +4,13 @@ import InputDisplay from './components/InputDisplay'
 import stringEditor from './components/stringEditor'
 import * as math from 'mathjs';
 import OutputDisplay from './components/OutputDisplay'
+import Interweave from 'interweave'
 
 function App() {
   const [stringPosition, setStringPosition] = useState(0)
   const [currentInput, setCurrentInput] = useState("0")
   const [resultString, setResultString] = useState("0")
-  // const [historyHTML, setHistoryHTML] =  useState("")
+  const [historyHTML, setHistoryHTML] =  useState("")
 
   
   const goToDirection = (direction, currentInputChanged) => {
@@ -49,11 +50,13 @@ function App() {
   const Clear = () => {
     setStringPosition(0)
     setCurrentInput("0");
-    setResultString("0")
+    // setResultString("0")
+    setHistoryHTML("")
   }
 
   const clearInputField = (value) => {
 
+    setHistoryHTML(historyHTML+`<p>${currentInput} = ${resultString}</p>`)
     setCurrentInput("0");
     setStringPosition(0)
 
@@ -61,10 +64,10 @@ function App() {
 
 
   useEffect(() => {
-console.log("something")
+// console.log("something")
 const content = test()
 
-if(content != false){
+if(content !== false){
   setResultString(content)
 }
 
@@ -139,11 +142,11 @@ if(content != false){
       <div className="app-title">
         <h3> Refactored Calculator</h3>
       </div>
-      {/*       
+            
       <div className="history">
         <Interweave content={historyHTML}></Interweave>
       </div>
-      */}
+     
 
       <InputDisplay string={currentInput} stringPos={stringPosition} interval={250}></InputDisplay>
       <OutputDisplay string={resultString}></OutputDisplay>

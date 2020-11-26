@@ -88,3 +88,20 @@ margin-right: 0.5vw;
   margin: 0;
   margin-left: 0.5vw;
 }
+
+.history p{
+  font-size: 2vw;
+  margin: 0;
+}
+
+.history {
+  height: 2vw;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.history::-webkit-scrollbar {
+display: none;
+  
+}
+
